@@ -5,9 +5,11 @@ import {
   Body,
   Param,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { JwtGuard } from 'src/auth/Guard/jwt-auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -17,16 +19,17 @@ export class UserController {
   create(@Body(ValidationPipe) createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
+  @UseGuards(JwtGuard)
   @Get()
   findAll() {
     return this.userService.findAll();
   }
-  // @UseGuards(JwtGuard)
+  @UseGuards(JwtGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
-
+  @UseGuards(JwtGuard)
   @Get('by-name/:name')
   findByUsername(@Param('name') name: string) {
     return this.userService.findByusername(name);

@@ -1,5 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+  OneToMany,
+} from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Blogger } from 'src/blogger/entities/blogger.entity';
 
 @Entity('user')
 export class User {
@@ -18,14 +25,19 @@ export class User {
   @Column({ nullable: false })
   phonenumber: string;
 
-  @Column({ default: 'user' })
+  @Column({ default: 'blogger' })
   role: string;
 
   @Column({ nullable: false })
   password: string;
 
+  @Column({ default: true })
+  isActive: boolean;
+
   @BeforeInsert()
   async HashPassword() {
     this.password = await bcrypt.hash(this.password, 10);
   }
+  @OneToMany(() => Blogger, (blog) => blog.author) // Add this line
+  blogs: Blogger[];
 }
