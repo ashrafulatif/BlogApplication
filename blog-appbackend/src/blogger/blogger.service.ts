@@ -33,6 +33,10 @@ export class BloggerService {
     });
     return this.blogRepository.save(blog);
   }
+  //retunn all public blog
+  async findAllPublicBlog() {
+    return await this.blogRepository.find();
+  }
 
   async findAll(userId: number) {
     return this.blogRepository.find({ where: { author: { id: userId } } });
