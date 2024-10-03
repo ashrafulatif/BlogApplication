@@ -77,9 +77,9 @@ export default function RemoveUser({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col min-h-screen">
       <AdminHeader />
-      <div className="flex mt-20">
+      <div className="flex flex-1 pt-16">
         <AdminSidebar />
-        <div className="flex justify-center w-full p-4">
+        <div className="flex-1 flex justify-center items-start p-4 mt-20">
           <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
             <h1 className="text-2xl text-center font-bold mb-4">Remove User</h1>
             <div className="mb-4">

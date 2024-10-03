@@ -18,10 +18,10 @@ const AdminHeader = () => {
   };
 
   return (
-    <header className="fixed w-full bg-customBlack py-4 top-0 left-0 z-50">
+    <header className="fixed w-full bg-customBlack py-5 top-0 left-0 z-50">
       <div className="container mx-auto flex justify-between items-center max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1>
-          <Link href="/" className="text-white">
+          <Link href="/" className="text-white text-2xl font-extrabold">
             Blog Application
           </Link>
         </h1>

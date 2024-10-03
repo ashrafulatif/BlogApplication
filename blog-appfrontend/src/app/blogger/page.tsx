@@ -15,7 +15,7 @@ export default function BloggerDashboard() {
   return (
     <>
       <BloggerHeader />
-      <div className="flex h-screen bg-gray-100">
+      <div className="flex h-screen bg-gray-100  pt-16">
         <BloggerSidebar />
         <div className="flex-1 p-6">
           <h1 className="text-2xl font-bold mb-4">Blogger Dashboard</h1>

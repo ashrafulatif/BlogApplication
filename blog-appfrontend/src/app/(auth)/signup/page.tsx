@@ -36,6 +36,25 @@ export default function Signup() {
     setShowPassword((prevState) => !prevState);
   };
 
+  // Check if username exists
+  const handleUsername = async () => {
+    if (!username) return;
+
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/user/by-name/${username}`
+      );
+      if (response.data) {
+        setError("Username is already taken");
+      } else {
+        setError("");
+      }
+    } catch (error) {
+      console.error("Error checking username:", error);
+      setError("Error checking username");
+    }
+  };
+
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     console.log("Submit button clicked!");
@@ -66,8 +85,6 @@ export default function Signup() {
       return;
     }
 
-    // Perform additional validations...
-
     try {
       const response = await postData();
       console.log("User registered successfully:", response);
@@ -81,7 +98,7 @@ export default function Signup() {
       router.push("/login");
     } catch (error) {
       console.error("Error registering user:", error);
-      setError("Username/Email Already Exists");
+      setError("Username Already Exists");
     }
   };
 
@@ -133,6 +150,7 @@ export default function Signup() {
                 placeholder="Username"
                 value={username}
                 onChange={handleChangeUsername}
+                onBlur={handleUsername}
                 className="bg-customGray rounded w-full py-2 px-3 text-customBlack2 leading-tight focus:outline-none focus:shadow-outline"
               />
               <input

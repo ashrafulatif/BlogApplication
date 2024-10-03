@@ -95,7 +95,7 @@ export default function UpdateUser({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col min-h-screen">
       <AdminHeader />
-      <div className="flex flex-1">
+      <div className="flex flex-1 pt-16">
         <AdminSidebar />
         <div className="flex-1 flex justify-center items-start p-4 mt-20">
           <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">

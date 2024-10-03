@@ -8,9 +8,9 @@ export default function AdminDashboard() {
   return (
     <>
       <AdminHeader />
-      <div className="flex h-screen bg-gray-100">
+      <div className="flex h-screen bg-gray-100 pt-16">
         <AdminSidebar />
-        <div className="flex-1 p-6">
+        <div className="flex-1 p-5">
           <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
           <AdminManagementTable />
         </div>

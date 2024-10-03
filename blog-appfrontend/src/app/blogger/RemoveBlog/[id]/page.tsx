@@ -72,45 +72,50 @@ export default function RemoveBlog({ params }: { params: { id: string } }) {
   if (!blog) return <div>Loading...</div>;
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <BloggerHeader />
-      <div className="flex justify-center p-4 mt-20">
-        <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
-          <h1 className="text-2xl text-center font-bold mt-0 mb-3">
-            Remove Blog
-          </h1>
-          <div className="mb-3">
-            <label className="block text-gray-700 font-bold mb-1">Title</label>
-            <input
-              type="text"
-              value={blog.title}
-              readOnly
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-          <div className="mb-3">
-            <label className="block text-gray-700 font-bold mb-1">
-              Content
-            </label>
-            <textarea
-              value={blog.content}
-              readOnly
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              rows={4}
-            />
-          </div>
-          <div className="text-center">
-            <button
-              type="button"
-              className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline w-full"
-              onClick={handleConfirmation}
-            >
+      <div className="flex flex-1 pt-16">
+        <BloggerSidebar />
+        <div className="flex-1 flex justify-center items-start p-4 mt-20">
+          <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+            <h1 className="text-2xl text-center font-bold mt-0 mb-3">
               Remove Blog
-            </button>
-            {error && <p className="text-red-500">{error}</p>}
+            </h1>
+            <div className="mb-3">
+              <label className="block text-gray-700 font-bold mb-1">
+                Title
+              </label>
+              <input
+                type="text"
+                value={blog.title}
+                readOnly
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div className="mb-3">
+              <label className="block text-gray-700 font-bold mb-1">
+                Content
+              </label>
+              <textarea
+                value={blog.content}
+                readOnly
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                rows={4}
+              />
+            </div>
+            <div className="text-center">
+              <button
+                type="button"
+                className="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline w-full"
+                onClick={handleConfirmation}
+              >
+                Remove Blog
+              </button>
+              {error && <p className="text-red-500">{error}</p>}
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

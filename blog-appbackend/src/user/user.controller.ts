@@ -29,7 +29,6 @@ export class UserController {
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
-  @UseGuards(JwtGuard)
   @Get('by-name/:name')
   findByUsername(@Param('name') name: string) {
     return this.userService.findByusername(name);

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import BloggerHeader from "@/app/components/bloggerHeader";
+import BloggerSidebar from "@/app/components/bloggerSideBar";
 
 interface Blog {
   id: number;
@@ -95,47 +96,52 @@ export default function UpdateBlog({ params }: { params: { id: string } }) {
   if (!blog) return <div>Blog not found.</div>;
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <BloggerHeader />
-      <div className="flex justify-center p-4 mt-20">
-        <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
-          <h1 className="text-2xl text-center font-bold mt-0 mb-3">
-            Update Blog
-          </h1>
-          <div className="mb-3">
-            <label className="block text-gray-700 font-bold mb-1">Title</label>
-            <input
-              type="text"
-              name="title"
-              value={blog.title}
-              onChange={handleChange}
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-          <div className="mb-3">
-            <label className="block text-gray-700 font-bold mb-1">
-              Content
-            </label>
-            <textarea
-              name="content"
-              value={blog.content}
-              onChange={handleChange}
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              rows={5}
-            />
-          </div>
-          <div className="text-center">
-            <button
-              type="button"
-              className="bg-customTeal hover:bg-indigo-500 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline w-full"
-              onClick={handleUpdate}
-            >
+      <div className="flex flex-1 pt-16">
+        <BloggerSidebar />
+        <div className="flex-1 flex justify-center items-start p-4 mt-20">
+          <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+            <h1 className="text-2xl text-center font-bold mt-0 mb-3">
               Update Blog
-            </button>
-            {error && <p className="text-red-500">{error}</p>}
+            </h1>
+            <div className="mb-3">
+              <label className="block text-gray-700 font-bold mb-1">
+                Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                value={blog.title}
+                onChange={handleChange}
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div className="mb-3">
+              <label className="block text-gray-700 font-bold mb-1">
+                Content
+              </label>
+              <textarea
+                name="content"
+                value={blog.content}
+                onChange={handleChange}
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                rows={5}
+              />
+            </div>
+            <div className="text-center">
+              <button
+                type="button"
+                className="bg-customTeal hover:bg-indigo-500 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline w-full"
+                onClick={handleUpdate}
+              >
+                Update Blog
+              </button>
+              {error && <p className="text-red-500">{error}</p>}
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
