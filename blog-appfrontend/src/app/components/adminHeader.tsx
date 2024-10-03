@@ -13,7 +13,7 @@ const AdminHeader = () => {
       router.push("/login");
     } catch (error) {
       console.error("Error during logout:", error);
-      // Optionally display an error message
+      
     }
   };
 
